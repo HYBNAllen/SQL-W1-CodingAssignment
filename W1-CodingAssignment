@@ -1,0 +1,35 @@
+--The following code displays all employees born before 1965-01-01 (from the employees database).
+SELECT * FROM employees WHERE birth_date < '1965-01-01' LIMIT 20;
+
+--The following code shows all female employees hired after 1990.
+SELECT * FROM employees WHERE gender = 'F' AND hire_date > '1960-12-31' Limit 20;
+
+--The following code shows first and last name (only) of the first 50 employees whose last name starts with F.
+SELECT first_name, last_name FROM employees WHERE last_name like 'f%' limit 50;
+
+--The following lines of code insert 3 new employees, having employee numbers 100, 101, and 102, consecutively.
+use employees;
+select * from employees;
+insert into employees values 
+(100, '1985-07-07', 'James', 'Bond', 'M', '2021-11-08'),
+(101, '1974-01-07', 'Susan', 'Cartwright', 'F', '2021-11-08'),
+(102, '2000-06-17', 'Heather', 'Clearsky', 'F', '2021-11-08');
+
+--The following code changes the first name of employee number 10023 to Bob. (This code only shows the updated row.)
+use employees;
+select * from employees;
+update employees set first_name = 'Bob' where emp_no = 10023;
+select * from employees where emp_no = 10023;
+
+--This code changes all employees hire dates to 2002-01-01 whose first or last names start with P.
+use employees;
+select * from employees where first_name or last_name like'p%';
+update employees set hire_date = '2002-01-01' where first_name like 'p%';
+update employees set hire_date = '2002-01-01' where last_name like 'p%';
+
+--The following code that deletes all employees with an employee number less than 10000 (which include the 3 I just added).
+use employees;
+select * from employees where emp_no IN (10048, 10099, 10234, 20089);
+delete from employees WHERE emp_no in (10048, 10099, 10234, 20089);
+
+
